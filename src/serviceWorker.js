@@ -21,17 +21,9 @@ const isLocalhost = Boolean(
 );
 
 export function register(config) {
-  console.log('i was called', process.env.PUBLIC_URL);
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-    console.log('The problem is not in the if statement');
-  } else {
-    console.log('It\'s not registered because of the if statement',
-      process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator);
-  }
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
-    console.log(publicUrl, publicUrl.origin, window.location.origin);
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
