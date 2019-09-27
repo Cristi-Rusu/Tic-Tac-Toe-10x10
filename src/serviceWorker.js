@@ -21,7 +21,12 @@ const isLocalhost = Boolean(
 );
 
 export function register(config) {
-  console.log('i was called');
+  console.log('i was called', process.env.PUBLIC_URL);
+  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+    console.log('The problem is not in the if statement');
+  } else {
+    console.log('It\'s not registered because of the if statement');
+  }
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
