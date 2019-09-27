@@ -25,7 +25,8 @@ export function register(config) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     console.log('The problem is not in the if statement');
   } else {
-    console.log('It\'s not registered because of the if statement');
+    console.log('It\'s not registered because of the if statement',
+      process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator);
   }
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
