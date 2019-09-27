@@ -75,7 +75,7 @@ function calculateWinner(squares) {
 function Square(props) {
     return (
         <button
-            className='square'
+            className={`square ${props.type}`}
             onClick={props.onClick}
             style={{color: props.color}}
         >
@@ -87,16 +87,19 @@ function Square(props) {
 class Board extends React.Component {
     renderSquare(i) {
         const tileVal = this.props.squares[i];
-        let squareColor = tileVal === 'X' ? 'red' : '#009fff';
-        if (this.props.winLine.includes(i)) {
-            squareColor = 'black';
+        let type = '';
+        if (tileVal) {
+            type = tileVal === 'X' ? 'x' : 'o';
+            if (this.props.winLine.includes(i)) {
+                type = 'win';
+            }
         }
         return (
             <Square
                 key={i}
                 value={this.props.squares[i]}
                 onClick={() => this.props.onClick(i)}
-                color={squareColor}
+                type={type}
             />
         );
     }
@@ -226,7 +229,6 @@ class Game extends React.Component {
                     <div>{status}</div>
                     <button
                         onClick={this.reverseOl}
-                        style={{height: '20px'}}
                     >
                         Reverse List
                     </button>
