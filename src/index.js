@@ -86,9 +86,10 @@ function Square(props) {
 
 class Board extends React.Component {
     renderSquare(i) {
-        let squareColor = 'gray';
+        const tileVal = this.props.squares[i];
+        let squareColor = tileVal === 'X' ? 'red' : '#009fff';
         if (this.props.winLine.includes(i)) {
-            squareColor = 'green';
+            squareColor = 'black';
         }
         return (
             <Square
