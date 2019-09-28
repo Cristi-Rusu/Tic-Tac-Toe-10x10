@@ -23,10 +23,11 @@ export default class GameContainer extends React.Component {
     }
 
     jumpTo(step) {
-        this.setState({
+        this.setState(state => ({
             stepNumber: step,
             xIsNext: (step % 2) === 0,
-        })
+            winner: calculateWinner(state.history[step].squares, winLines),
+        }))
     }
 
     handleClick(i) {
