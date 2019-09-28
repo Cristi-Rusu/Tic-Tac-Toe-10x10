@@ -135,7 +135,7 @@ class Game extends React.Component {
         super(props);
         this.state = {
             history: [{
-                squares: Array(9).fill(null),
+                squares: Array(100).fill(null),
             }],
             stepNumber: 0,
             xIsNext: true,
