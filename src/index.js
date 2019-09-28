@@ -194,6 +194,7 @@ class Game extends React.Component {
             const move = [(
                 <li key={i}>
                     <button
+                        className='btn'
                         onClick={() => this.jumpTo(i)}
                         style={i === this.state.stepNumber ? {fontWeight: 'bold'} : {}}
                     >
@@ -210,12 +211,24 @@ class Game extends React.Component {
 
         let status;
         if (winner.side) {
-            status = `Winner: ${winner.side}`;
+            status = (
+                <span>Winner:
+                    <span className={winner.side === 'X' ? 'x' : 'o'}>
+                        {' ' + winner.side}
+                    </span>
+                </span>
+            );
         // if there are no empty squares left
         } else if (!current.squares.includes(null)) {
             status = 'It\'s a draw';
         } else {
-            status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+            status = (
+                <span>Next player:
+                    <span className={this.state.xIsNext ? 'x' : 'o'}>
+                        {this.state.xIsNext ? ' X' : ' O'}
+                    </span>
+                </span>
+            );
         }
 
         return (
@@ -226,9 +239,10 @@ class Game extends React.Component {
                     onClick={this.handleClick}
                 />
                 <div className='game-info'>
-                    <div>{status}</div>
+                    <h2>{status}</h2>
                     <button
                         onClick={this.reverseOl}
+                        className='btn'
                     >
                         Reverse List
                     </button>

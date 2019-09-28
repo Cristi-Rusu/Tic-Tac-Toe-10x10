@@ -8,11 +8,14 @@ ol, ul {
 }
 
 li + li {
-    margin-top: 3px;
+    margin-top: 4px;
 }
 
-button {
-    height: 21px;
+.btn {
+    height: 25px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
 }
 
 .board-row:after {
