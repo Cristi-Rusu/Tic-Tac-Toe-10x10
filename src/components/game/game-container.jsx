@@ -14,6 +14,7 @@ export default class GameContainer extends React.Component {
             stepNumber: 0,
             xIsNext: true,
             reversedList: false,
+            winner: { side: null, line: [] },
         }
         // This binding is necessary to make `this` work inside the callback
         this.handleClick = this.handleClick.bind(this);
@@ -34,7 +35,7 @@ export default class GameContainer extends React.Component {
         const current = history[history.length - 1];
         const squares = current.squares.slice();
         // if there is a winner or the square is filled
-        if (calculateWinner(squares, winLines).side || squares[i]) {
+        if (this.state.winner.side || squares[i]) {
             return;
         }
         const side = this.state.xIsNext ? 'X' : 'O';
@@ -47,6 +48,7 @@ export default class GameContainer extends React.Component {
             }),
             stepNumber: history.length,
             xIsNext: !state.xIsNext,
+            winner: calculateWinner(squares, winLines),
         }));
     }
 
@@ -57,9 +59,9 @@ export default class GameContainer extends React.Component {
     }
 
     render() {
-        const { history, stepNumber, reversedList, xIsNext } = this.state;
-        const current = history[stepNumber];
-        const winner = calculateWinner(current.squares, winLines);
+        const {
+            history, stepNumber, reversedList, xIsNext, winner
+        } = this.state;
         return (
             <Game
                 winner={winner}

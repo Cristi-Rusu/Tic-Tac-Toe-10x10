@@ -16,7 +16,7 @@ export default function GameView(props) {
             <GameInfo
                 history={history}
                 stepNumber={stepNumber}
-                winner={winner.side}
+                winSide={winner.side}
                 xIsNext={props.xIsNext}
                 reversedList={props.reversedList}
                 reverseOl={props.reverseOl}

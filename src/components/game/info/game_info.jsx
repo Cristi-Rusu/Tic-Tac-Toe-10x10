@@ -1,15 +1,15 @@
 import React from 'react';
 
 export default function GameInfo(props) {
-    const { history, winner } = props;
+    const { history, winSide } = props;
     const current = history[props.stepNumber];
 
     let status;
-    if (winner) {
+    if (winSide) {
         status = (
             <span>Winner:
-                <span className={winner === 'X' ? 'x' : 'o'}>
-                    {' ' + winner}
+                <span className={winSide === 'X' ? 'x' : 'o'}>
+                    {' ' + winSide}
                 </span>
             </span>
         );
